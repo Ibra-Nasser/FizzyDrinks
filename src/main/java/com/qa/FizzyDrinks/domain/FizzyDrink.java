@@ -104,4 +104,10 @@ public class FizzyDrink {
 		this.flavour = flavour;
 	}
 
+	@Override
+	public String toString() {
+		return "FizzyDrink [id=" + id + ", brand=" + brand + ", name=" + name + ", sugarContent=" + sugarContent
+				+ ", flavour=" + flavour + "]";
+	}
+
 }
