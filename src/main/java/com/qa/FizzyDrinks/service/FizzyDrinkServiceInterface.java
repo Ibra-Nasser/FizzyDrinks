@@ -16,6 +16,6 @@ public interface FizzyDrinkServiceInterface<T> {
 	T updateFizzyDrinkById(T t, Integer Id);
 
 	// Delete - return boolean
-	boolean removeFizzyDrink(Integer Id);
+	T removeFizzyDrink(Integer Id);
 
 }
