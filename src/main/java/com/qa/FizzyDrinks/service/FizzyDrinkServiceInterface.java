@@ -10,12 +10,12 @@ public interface FizzyDrinkServiceInterface<T> {
 	List<T> getFizzyDrink();
 
 	// Read by ID
-	T getFizzyDrinkById(Integer Id);
+	T getFizzyDrinkById(Long Id);
 
 	// Update by Object ID
-	T updateFizzyDrinkById(T t, Integer Id);
+	T updateFizzyDrinkById(T t, Long Id);
 
 	// Delete - return boolean
-	T removeFizzyDrink(Integer Id);
+	T removeFizzyDrink(Long Id);
 
 }

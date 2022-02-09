@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.qa.FizzyDrinks.domain.FizzyDrink;
 
 @Repository
-public interface FizzyDrinkRepo extends JpaRepository<FizzyDrink, Integer> {
+public interface FizzyDrinkRepo extends JpaRepository<FizzyDrink, Long> {
 
 }

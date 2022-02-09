@@ -14,7 +14,7 @@ public class FizzyDrink {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@NotNull
 	private String brand;
@@ -38,7 +38,8 @@ public class FizzyDrink {
 		this.flavour = flavour;
 	}
 
-	public FizzyDrink(int id, String brand, String name, int sugarContent, String flavour) {
+	public FizzyDrink(Long id, String brand, String name, int sugarContent, String flavour) {
+		super();
 		this.id = id;
 		this.brand = brand;
 		this.name = name;
@@ -46,29 +47,11 @@ public class FizzyDrink {
 		this.flavour = flavour;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(brand, flavour, id, name, sugarContent);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FizzyDrink other = (FizzyDrink) obj;
-		return Objects.equals(brand, other.brand) && Objects.equals(flavour, other.flavour) && id == other.id
-				&& Objects.equals(name, other.name) && sugarContent == other.sugarContent;
-	}
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -102,6 +85,24 @@ public class FizzyDrink {
 
 	public void setFlavour(String flavour) {
 		this.flavour = flavour;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(brand, flavour, name, sugarContent);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FizzyDrink other = (FizzyDrink) obj;
+		return Objects.equals(brand, other.brand) && Objects.equals(flavour, other.flavour)
+				&& Objects.equals(name, other.name) && sugarContent == other.sugarContent;
 	}
 
 	@Override
