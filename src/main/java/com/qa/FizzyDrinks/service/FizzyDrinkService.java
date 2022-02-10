@@ -51,7 +51,7 @@ public class FizzyDrinkService implements FizzyDrinkServiceInterface<FizzyDrink>
 	@Override
 	public FizzyDrink removeFizzyDrink(Long Id) {
 		Optional<FizzyDrink> optionalFizzy = this.repo.findById(Id);
-		if (this.repo.existsById(Id) == true) {
+		if (optionalFizzy.isPresent()) {
 			this.repo.deleteById(Id);
 			return optionalFizzy.get();
 		}
