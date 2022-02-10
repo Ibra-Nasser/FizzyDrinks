@@ -45,7 +45,7 @@ public class FizzyDrinkControllerTest {
 		// CONVERT INTO JSON
 		String newFJSON = this.map.writeValueAsString(newF);
 		// Build a mock request
-		RequestBuilder mockRequest = post("/create").contentType(MediaType.APPLICATION_JSON).content(newFJSON);
+		RequestBuilder mockRequest = post("/api/create").contentType(MediaType.APPLICATION_JSON).content(newFJSON);
 
 		// ----response
 		FizzyDrink savedF = new FizzyDrink(2L, "Fanta", "Orange", 10, "orange");
@@ -66,33 +66,42 @@ public class FizzyDrinkControllerTest {
 	@Test
 	void readAllTest() throws Exception {
 		FizzyDrink savedF = new FizzyDrink(1L, "Fanta", "Orange", 10, "orange");
-		this.mock.perform(get("/readAll")).andExpect(status().isOk())
+		this.mock.perform(get("/api/readAll")).andExpect(status().isOk())
 				.andExpect(content().json(this.map.writeValueAsString(List.of(savedF))));
 	}
 
 	@Test
 	void readByIdTest() throws Exception {
 		FizzyDrink savedF = new FizzyDrink(1L, "Fanta", "Orange", 10, "orange");
-		this.mock.perform(get("/readById/1")).andExpect(status().isFound())
+		this.mock.perform(get("/api/readById/1")).andExpect(status().isFound())
 				.andExpect(content().json(this.map.writeValueAsString(savedF)));
 	}
 
+//	@Test
+//	void updateTest() throws Exception {
+//		FizzyDrink updateFizzy = new FizzyDrink("Coca", "Cola", 20, "cola");
+//		String updateFizzyJSON = this.map.writeValueAsString(updateFizzy);
+//
+//		RequestBuilder updateReq = put("/update/1").contentType(MediaType.APPLICATION_JSON)
+//				.content(updateFizzyJSON);
+//
+//		FizzyDrink retUpdatedFizzy = new FizzyDrink(1L, "Coca", "Cola", 20, "cola");
+//		String retUpdatedFizzyJSON = this.map.writeValueAsString(retUpdatedFizzy);
+//
+//		ResultMatcher retStatus = status().isOk();
+//		ResultMatcher retBody = content().json(retUpdatedFizzyJSON);
+//
+//		this.mock.perform(updateReq).andExpect(retStatus).andExpect(retBody);
+//	}
+//	
 	@Test
 	void updateTest() throws Exception {
-		FizzyDrink updateFizzy = new FizzyDrink("Coca", "Cola", 20, "cola");
-		String updateFizzyJSON = this.map.writeValueAsString(updateFizzy);
-		Long IDupdate = 1L;
-
-		RequestBuilder updateReq = put("/updateFizzy/" + IDupdate).contentType(MediaType.APPLICATION_JSON)
-				.content(updateFizzyJSON);
-
-		FizzyDrink retUpdatedFizzy = new FizzyDrink(1L, "Coca", "Cola", 20, "cola");
-		String retUpdatedFizzyJSON = this.map.writeValueAsString(retUpdatedFizzy);
-
-		ResultMatcher retStatus = status().isOk();
-		ResultMatcher retBody = content().json(retUpdatedFizzyJSON);
-
-		this.mock.perform(updateReq).andExpect(retStatus).andExpect(retBody);
+		FizzyDrink savedF = new FizzyDrink("Fanta", "Orange", 10, "orange");
+		FizzyDrink updatedF = new FizzyDrink(1L, "Fanta", "Orange", 10, "orange");
+		this.mock
+				.perform(put("/api/update/1").contentType(MediaType.APPLICATION_JSON)
+						.content(this.map.writeValueAsString(savedF)))
+				.andExpect(status().isAccepted()).andExpect(content().json(this.map.writeValueAsString(updatedF)));
 	}
 
 }

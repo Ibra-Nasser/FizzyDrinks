@@ -1,0 +1,1 @@
+insert into fizzy_drink (id, brand, name, sugar_content, flavour) values ('Fanta', 'Orange', 10, 'orange');
