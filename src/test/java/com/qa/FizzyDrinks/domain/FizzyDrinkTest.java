@@ -3,7 +3,9 @@ package com.qa.FizzyDrinks.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class FizzyDrinkTest {
 
 	private FizzyDrink testFizzy = new FizzyDrink(1L, "Fanta", "Orange", 10, "orange");
@@ -32,5 +34,23 @@ public class FizzyDrinkTest {
 	public void testToString() {
 		assertEquals("FizzyDrink [id=1, brand=Fanta, name=Orange, sugarContent=10, flavour=orange]",
 				testFizzy.toString());
+
 	}
+
+	@Test
+	public void testGetAndSet() {
+		testFizzy.setId(3L);
+		testFizzy.setBrand("Coca");
+		testFizzy.setName("Cola");
+		testFizzy.setSugarContent(20);
+		testFizzy.setFlavour("Cola");
+
+		assertEquals(3L, testFizzy.getId());
+		assertEquals("Coca", testFizzy.getBrand());
+		assertEquals("Cola", testFizzy.getName());
+		assertEquals(20, testFizzy.getSugarContent());
+		assertEquals("Cola", testFizzy.getFlavour());
+
+	}
+
 }
