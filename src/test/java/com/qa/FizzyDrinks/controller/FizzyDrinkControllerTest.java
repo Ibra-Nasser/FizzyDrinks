@@ -1,5 +1,6 @@
 package com.qa.FizzyDrinks.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -104,4 +105,16 @@ public class FizzyDrinkControllerTest {
 				.andExpect(status().isAccepted()).andExpect(content().json(this.map.writeValueAsString(updatedF)));
 	}
 
+	@Test
+	void deleteTest() throws Exception {
+		FizzyDrink deleteFizzy = new FizzyDrink(1L, "Fanta", "Orange", 10, "orange");
+		String deleteFizzyJSON = this.map.writeValueAsString(deleteFizzy);
+
+		Long remId = 1L;
+		RequestBuilder delRequest = delete("/api/delete/1");
+		ResultMatcher Status = status().isAccepted();
+		ResultMatcher Body = content().json(deleteFizzyJSON);
+
+		this.mock.perform(delRequest).andExpect(Status).andExpect(Body);
+	}
 }
