@@ -25,8 +25,8 @@ import com.qa.FizzyDrinks.domain.FizzyDrink;
 @SpringBootTest
 @AutoConfigureMockMvc // acts like postman
 
-@Sql(scripts = { "classpath:FizzyDrink-schema.sql",
-		"classpath:FizzyDrink.sql" }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:FizzyDrinks-schema.sql",
+		"classpath:FizzyDrinks-data.sql" }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 
 @ActiveProfiles("test")
 public class FizzyDrinkControllerTest {
@@ -66,7 +66,7 @@ public class FizzyDrinkControllerTest {
 	@Test
 	void readAllTest() throws Exception {
 		FizzyDrink savedF = new FizzyDrink(1L, "Fanta", "Orange", 10, "orange");
-		this.mock.perform(get("/api/readAll")).andExpect(status().isOk())
+		this.mock.perform(get("/api/readAll")).andExpect(status().isFound())
 				.andExpect(content().json(this.map.writeValueAsString(List.of(savedF))));
 	}
 

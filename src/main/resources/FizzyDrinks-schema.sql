@@ -1,4 +1,4 @@
-drop table if exists `fizzy_drink` CASCADE 
+drop table if exists `fizzy_drink` CASCADE;
 create table fizzy_drink (
 id bigint AUTO_INCREMENT,
 brand varchar(255),
