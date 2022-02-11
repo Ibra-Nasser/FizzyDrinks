@@ -1,8 +1,14 @@
 # FizzyDrinks
 Why are we doing this? To create an application that handles/manages a database/table of fizzy drinks
+
 How I expected the challenge to go? I expected it to be straight forward
+
 What went well and what didn't? The code was simple enough, little mistakes in using git and I underestimated how extensive the documentation would be
+
 Possible improvements for the future -- More Complicated ERD/functionality
+
+ERD: ![image](https://user-images.githubusercontent.com/95347330/153592431-b2b3937c-9353-4217-a58b-1ce571fc37f4.png)
+
 
 Postman images: CRUD
 Create ![image](https://user-images.githubusercontent.com/95347330/153590650-0c52a3e7-4f5c-498c-b105-0e18a32bb6d9.png)
