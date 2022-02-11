@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 @SpringBootTest
 @ActiveProfiles("test")
 public class FizzyDrinkTest {
@@ -53,6 +55,11 @@ public class FizzyDrinkTest {
 		assertEquals(20, testFizzy.getSugarContent());
 		assertEquals("Cola", testFizzy.getFlavour());
 
+	}
+
+	@Test
+	public void testinghash() {
+		EqualsVerifier.simple().forClass(FizzyDrink.class).verify();
 	}
 
 }
